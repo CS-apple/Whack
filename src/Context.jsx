@@ -5,7 +5,6 @@ import React from 'react'
 
 const GameContext = createContext();
 
-//establich game board 
 
 
 //STATES
@@ -14,19 +13,21 @@ export function GameProvider({children}) {
   const[score, setScore] = useState(0)
   const[board, setBoard] = useState(new Array(9).fill(false))
 
-  //creat the play space
-
+//place mole
+function placeMole(){
+  const gameboard = board.map(()=>false);
+  const random = Math.floor(Math.random()* gameboard.length);
+  gameboard[random] = true;
+  setBoard(gameboard);
+}
 //function 
 
 //reset board 
 
-function placeMole(board){
-  const random = Math.floor(Math.random()* board.length)
-  board[random] = true
-}
+
 
   //provide the context to export     
-  const value = {phase, setPhase, score, setScore, board, setBoard};
+  const value = {phase, setPhase, score, setScore, board, placeMole};
   return (<GameContext.Provider value={value}>{children}</GameContext.Provider>)
 }
 

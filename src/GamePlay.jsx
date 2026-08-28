@@ -1,15 +1,22 @@
 import React from 'react'
 import { useGame } from './Context'
+import { useEffect } from 'react';
 
 export default function GamePlay() {
-  const {phase, setPhase, score, board} = useGame();
+  const {phase, setPhase, score, placeMole, board, setScore } = useGame();
 
-  function CreateBoard(){
+useEffect(()=>{
+  placeMole();
+},[score])
+
+
+function CreateBoard(){
  const gameBoard = board.map((hole, index)=>{
-    if(hole ===false){
+    if(hole === false){
       return <li key = {index} className='hole'> </li>
     } else {
-      return <li li key = {index} className="mole"> </li>
+      return <li key = {index} className="mole"
+      onClick={()=>setScore(score+1)}> </li>
     }
   })
   return gameBoard;
