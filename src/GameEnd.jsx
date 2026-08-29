@@ -3,13 +3,16 @@ import { useGame } from "./Context"
 
 
 export default function GameEnd() {
-  const {phase, setPhase} = useGame()
+  const {phase, setPhase, score, highscores,  HighScoreList} = useGame()
+
   return (
     <>
     <h2>
-        Game end
+        Game Over!
     </h2>
+    <p>Your score: {score}</p>
     <button onClick={()=>setPhase("START")}>Restart</button>
+    
     </>
   )
 }

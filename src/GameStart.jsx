@@ -12,8 +12,6 @@ export default function GameStart() {
 
         <button onClick={()=>setPhase("PLAY")}>Play</button>
 
-        <h2>High Scores</h2>
-        <p>None yet ... Play the game</p>
   </>
   )
 }
